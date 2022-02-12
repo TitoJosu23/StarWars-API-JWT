@@ -25,6 +25,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
       },
+      clearSession: () => {
+        localStorage.removeItem("session");
+        setStore({ session: null });
+      },
       addFavorites: (favorite) => {
         const store = getStore();
         if (favorite.isFavorite === true) {
@@ -59,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       loadCharacters: async () => {
         const response = await fetch(
-          "https://3001-sapphire-albatross-airu9ipd75c.ws-us30.gitpod.io/api/character"
+          process.env.BACKEND_URL + `/api/character`
         );
         if (response.status === 200) {
           const payload = await response.json();
@@ -73,9 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       loadPlanets: async () => {
-        const response = await fetch(
-          "https://3001-sapphire-albatross-airu9ipd75c.ws-us30.gitpod.io/api/planet"
-        );
+        const response = await fetch(process.env.BACKEND_URL + `/api/planet`);
         if (response.status === 200) {
           const payload = await response.json();
           const myNewPlanets = payload.map((planets, i) => {
@@ -88,12 +90,32 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       loadFavorites: async () => {
-        const response = await fetch(
-          "https://3001-sapphire-albatross-airu9ipd75c.ws-us30.gitpod.io/api/favorite"
-        );
+        const response = await fetch(process.env.BACKEND_URL + `/api/favorite`);
         if (response.status === 200) {
           const payload = await response.json();
           setStore({ favorites: payload });
+        }
+      },
+      getCurrentSession: () => {
+        const session = JSON.parse(localStorage.getItem("session"));
+        return session;
+      },
+      createNewSession: async (email, password) => {
+        const options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email, password: password }),
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/token`,
+          options
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          localStorage.setItem("session", JSON.stringify(payload));
+          setStore({ session: payload });
+          return payload; //this is gonna make the promise resolve
+          // return jsonify({ "token": access_token, "user_id": user.id })
         }
       },
     },

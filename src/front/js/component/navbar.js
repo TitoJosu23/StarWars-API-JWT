@@ -4,7 +4,8 @@ import { Context } from "/workspace/react-flask-hello/src/front/js/store/appCont
 
 export const Navbar = (props) => {
   const { store, actions } = useContext(Context);
-
+  const session = actions.getCurrentSession();
+  console.log("session", session);
   return (
     <nav className="navbar navbar-light bg-light mb-3">
       <Link to="/">
@@ -16,6 +17,13 @@ export const Navbar = (props) => {
           ></img>
         </span>
       </Link>
+      {session ? (
+        <button onClick={() => actions.clearSession()}>Log Out</button>
+      ) : (
+        <Link to="/login">
+          <button>Log me in!</button>
+        </Link>
+      )}
       <div className="dropdown">
         <button
           className="btn btn-primary dropdown-toggle me-5"

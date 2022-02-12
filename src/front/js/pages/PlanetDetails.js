@@ -6,6 +6,8 @@ import { Link, useParams } from "react-router-dom";
 export const PlanetDetails = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
+  const session = actions.getCurrentSession();
+  if (!session) return "please login";
   return (
     <div className="container">
       <div className="row">
