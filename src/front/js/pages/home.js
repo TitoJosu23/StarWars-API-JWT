@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import "/workspace/react-flask-hello/src/front/styles/home.css";
-import { PlanetCards } from "/workspace/react-flask-hello/src/front/js/component/PlanetCards.js";
-import { CharacterCards } from "/workspace/react-flask-hello/src/front/js/component/CharacterCards.js";
-import { Context } from "/workspace/react-flask-hello/src/front/js/store/appContext.js";
+import "../../styles/home.css";
+import { PlanetCards } from "../component/PlanetCards.js";
+import { CharacterCards } from "../component/CharacterCards.js";
+import { Context } from "../store/appContext.js";
 
 export const Home = (props) => {
   const { store, actions } = useContext(Context);

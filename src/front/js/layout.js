@@ -1,18 +1,17 @@
 import React, { useState, useContext } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "/workspace/react-flask-hello/src/front/js/component/scrollToTop.js";
+import ScrollToTop from "./component/scrollToTop.js";
 
-import { Home } from "/workspace/react-flask-hello/src/front/js/pages/home.js";
-import { PlanetDetails } from "/workspace/react-flask-hello/src/front/js/pages/PlanetDetails.js";
-import { CharacterDetails } from "/workspace/react-flask-hello/src/front/js/pages/CharacterDetails.js";
-import { Login } from "/workspace/react-flask-hello/src/front/js/pages/login.js";
-import injectContext from "/workspace/react-flask-hello/src/front/js/store/appContext.js";
+import { Home } from "./pages/home.js";
+import { PlanetDetails } from "./pages/PlanetDetails.js";
+import { CharacterDetails } from "./pages/CharacterDetails.js";
+import { Login } from "./pages/login.js";
+import injectContext from "./store/appContext.js";
 
-import { Navbar } from "/workspace/react-flask-hello/src/front/js/component/navbar.js";
-import { Footer } from "/workspace/react-flask-hello/src/front/js/component/footer.js";
-import { Context } from "/workspace/react-flask-hello/src/front/js/store/appContext.js";
+import { Navbar } from "./component/navbar.js";
+import { Footer } from "./component/footer.js";
+import { Context } from "./store/appContext.js";
 
-//create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
   // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/

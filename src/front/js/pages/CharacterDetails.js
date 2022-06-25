@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { Context } from "/workspace/react-flask-hello/src/front/js/store/appContext.js";
+import { Context } from "../store/appContext.js";
 import { Link, useParams } from "react-router-dom";
 
 export const CharacterDetails = (props) => {

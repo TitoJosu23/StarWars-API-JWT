@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "/workspace/react-flask-hello/src/front/js/store/appContext.js";
+import { Context } from "../store/appContext.js";
 
 export const Navbar = (props) => {
   const { store, actions } = useContext(Context);
