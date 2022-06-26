@@ -7,13 +7,13 @@ export const Navbar = (props) => {
   const session = actions.getCurrentSession();
   console.log("session", session);
   return (
-    <nav className="navbar navbar-light bg-light mb-3">
+    <nav className="navbar navbar-dark bg-dark mb-3">
       <Link to="/">
         <span className="navbar-brand mb-0 ms-3 h1">
           <img
             height="70"
             width="125"
-            src="https://www.citypng.com/public/uploads/preview/-51608494584ia2sfbncsd.png"
+            src="https://static.cdnlogo.com/logos/s/43/star-wars.svg"
           ></img>
         </span>
       </Link>
@@ -21,12 +21,12 @@ export const Navbar = (props) => {
         <button onClick={() => actions.clearSession()}>Log Out</button>
       ) : (
         <Link to="/login">
-          <button>Log me in!</button>
+          <button className="btn btn-secondary me-5">Log me in!</button>
         </Link>
       )}
       <div className="dropdown">
         <button
-          className="btn btn-primary dropdown-toggle me-5"
+          className="btn btn-secondary dropdown-toggle me-5"
           id="dropdownMenu2"
           data-toggle="dropdown"
           aria-expanded="false"
